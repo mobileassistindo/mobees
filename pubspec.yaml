@@ -1,0 +1,47 @@
+name: Mobees
+description: A new Flutter application.
+publish_to: 'none'
+version: 1.0.0+2
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  about:
+    path: packages/about
+  core:
+    path: packages/core
+  cupertino_icons: ^1.0.6
+  firebase_core: ^2.22.0
+  firebase_crashlytics: ^3.4.4
+  flutter:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  get_it: ^7.6.4
+  http: ^1.1.0
+  movies:
+    path: packages/movies
+  tv_series:
+    path: packages/tv_series
+
+dev_dependencies:
+  bloc_test: ^9.1.5
+  build_runner: ^2.4.6
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  mockito: ^5.4.3
+  mocktail: ^1.0.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: 'assets/logo.png'
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
+    - certificates/

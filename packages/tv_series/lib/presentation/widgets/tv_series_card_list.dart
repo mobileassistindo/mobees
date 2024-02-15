@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:core/core.dart';
+import 'package:core/domain/entities/tv_series.dart';
+
+class TvSeriesCardList extends StatelessWidget {
+  final TvSeries tvSeries;
+
+  const TvSeriesCardList({
+    super.key,
+    required this.tvSeries,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(
+        color: cGrey2,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(
+          context,
+          tvSeriesDetailRoute,
+          arguments: tvSeries.id,
+        ),
+        child: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            Card(
+              color: Colors.white30,
+              child: Container(
+                margin: const EdgeInsets.only(
+                  left: 16 + 80 + 16,
+                  bottom: 8,
+                  right: 8,
+                  top: 8,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      tvSeries.name ?? '-',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: kHeading7,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      tvSeries.overview ?? '-',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                left: 16,
+                bottom: 16,
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                child: CachedNetworkImage(
+                  imageUrl: '$baseImageUrl${tvSeries.posterPath}',
+                  width: 80,
+                  placeholder: (_, __) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (_, __, ___) => const Icon(Icons.error),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
