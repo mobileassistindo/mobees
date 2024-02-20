@@ -18,11 +18,12 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
   get_it: ^7.6.4
-  http: ^1.1.0
+  http: ^0.13.0
   movies:
     path: packages/movies
   tv_series:
     path: packages/tv_series
+  rollbar_flutter: ^1.5.0
 
 dev_dependencies:
   bloc_test: ^9.1.5

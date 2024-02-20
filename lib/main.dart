@@ -34,6 +34,8 @@ import 'package:tv_series/presentation/pages/tv_series_detail_page.dart';
 
 import 'package:Mobees/firebase_options.dart';
 import 'package:Mobees/injection.dart' as di;
+import 'package:rollbar_flutter/rollbar.dart' show Rollbar, RollbarFlutter;
+import 'package:rollbar_flutter/rollbar.dart' as rollbar;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +48,20 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(MyApp());
+  const config = rollbar.Config(
+    accessToken: '72ff8cabcb324b49888e5fa9075ca20e',
+    environment: 'development',
+    codeVersion: '1.0.0',
+    handleUncaughtErrors: true,
+    includePlatformLogs: true,
+  );
+
+  // Run app with Rollbar
+  await RollbarFlutter.run(config, () {
+    runApp(MyApp());
+  });
+
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

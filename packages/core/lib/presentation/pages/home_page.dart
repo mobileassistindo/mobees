@@ -42,7 +42,15 @@ class _HomePageState extends State<HomePage> {
     const AboutPage(),
   ];
 
+
+  static throwException() {
+    var tes;
+    int s = tes + 1;
+  }
+
+
   void _onBottomNavTapped(int index) {
+    throwException();
     setState(() {
       _bottomNavIndex = index;
     });

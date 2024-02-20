@@ -17,8 +17,8 @@ dependencies:
   firebase_crashlytics: ^3.4.4
   flutter:
     sdk: flutter
-  google_fonts: ^6.1.0
-  http: ^1.1.0
+  google_fonts: any
+  http: ^0.13.0
   movies:
     path: ../movies
   sqflite: ^2.3.0
